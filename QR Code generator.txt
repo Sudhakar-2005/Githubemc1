@@ -1,0 +1,94 @@
+<!-- Created by Sudhakar -->
+
+<!-- 
+
+
+    reference Youtube channel :- GreatStack
+    reference video :- https://youtu.be/g1j9rR-H1lk?feature=shared
+
+
+    download button reference from :-
+https://youtu.be/XEdtwVcX3CQ?feature=shared
+
+
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="qr_code_generate.css">
+    <script src="qr_code_generate.js" defer></script>
+</head>
+
+<body>
+    <div class="qr-container animate__animated animate__zoomInDown">
+        <h2 id="heading"><i class="fa-solid fa-qrcode"></i> QR code Generator <i class="fa-solid fa-qrcode"></i></h2>
+
+        <input type="text" placeholder="enter valid url here..." id="qr-input">
+        <button id="qr-btn">Click here to generate QR code</button>
+        <div id="image-container">
+            <img src="" alt="" id="qr-img">
+            <a href="" id="downloadBtn" download="QR_Code.png">Download</a>
+
+        </div>
+
+    </div>
+
+
+    <a href="https://chat.whatsapp.com/KYcp4WeAW2C577NCoxb7xq"
+        target="_blank"><button id="linkedin_btn">CONNECT WITH ME  <i class="fa-brands fa-whatsapp" style="font-size:21px; margin:2px;"></i></button></a>
+
+
+    <script>
+        const qrInput = document.getElementById("qr-input");
+const qrBtn = document.getElementById("qr-btn");
+const qrImg = document.getElementById("qr-img");
+const downloadBtn = document.getElementById("downloadBtn")
+// console.log(qrBtn,qrImg,qrInput)
+
+
+qrBtn.addEventListener("click", () => {
+    const inputValue = qrInput.value;
+
+
+    if (!inputValue) {
+        alert("please enter valid url ");
+        return;
+    }
+    else { 
+    qrImg.style.display="block";
+        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inputValue}`
+        qrImg.alt = `Qr code for ${inputValue}`
+
+    
+
+
+downloadBtn.style.display = "block";
+downloadBtn.addEventListener('click', ()=>{
+  
+
+    
+        let imgAtrr = qrImg.getAttribute('src');
+        downloadBtn.setAttribute("href", imgAtrr);
+    
+});
+
+    }
+});
+
+    </script>
+
+</body>
+
+</html>
